@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#65B8D8D2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layout_top"
+        android:background="@drawable/background_meteo">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardCornerRadius="30dp"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00FFFFFF"
+                android:orientation="horizontal"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp">
+
+                <EditText
+                    android:id="@+id/text_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Rechercher..."
+                    android:inputType="textPersonName"
+                    android:fontFamily="times"
+                    android:paddingStart="20sp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="italic"
+                    android:textSize="20dp"
+                    />
+                <ImageButton
+                    android:id="@+id/search_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/baseline_search_24"
+                    android:background="#00FFFFFF"
+
+
+                    />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_city"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="times"
+            android:text="City Name"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/image_weather"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/weather" />
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="times"
+            android:gravity="center"
+            android:text="Monday, November 23, 2001"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/text_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="25°C"
+            android:textSize="25dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@id/layout_top"
+        android:layout_marginTop="20dp">
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_dash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@id/layout_search">
+
+
+        <!-- Today CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="30dp"
+
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="center|top"
+                android:background="@drawable/rounded_background"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_margin="5dp"
+                    android:id="@+id/btntoday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Aujourd'hui"
+                    android:fontFamily="times"
+                    android:background="@drawable/rounded_background"
+                    android:backgroundTint="#FFFFFF"
+                    android:textColor="#000000"
+                    />
+            </LinearLayout>
+
+            <!-- LinearLayout for Tiny Squares -->
+
+            <RelativeLayout
+                android:id="@+id/todaydash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp">
+
+                <!-- Tiny Square - Wind -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardwind"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="#F4F8F7"
+                    android:padding="30dp"
+                    app:cardCornerRadius="20dp">
+                    <!-- Icon for Wind -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="#F4F8F7">
+
+                        <ImageView
+                            android:id="@+id/img"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/vent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_toEndOf="@id/img"
+                            android:text="Vent"
+                            android:fontFamily="times"
+                            android:textSize="12dp" />
+                        <!-- Wind Data TextView -->
+                        <TextView
+                            android:id="@+id/text_vent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/img"
+                            android:layout_gravity="bottom|center"
+                            android:gravity="bottom|center"
+                            android:padding="10dp"
+                            android:text="5 km/h" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Tiny Square - Temperature Felt -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardfelt"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/cardwind"
+                    android:layout_weight="1"
+                    android:background="#F4F8F7"
+                    android:padding="30dp"
+                    app:cardCornerRadius="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="#F4F8F7">
+                        <!-- Icon for Temperature Felt -->
+                        <ImageView
+                            android:id="@+id/imgfelt"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/temp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_toEndOf="@id/imgfelt"
+                            android:gravity="center"
+                            android:fontFamily="times"
+                            android:text="Ressenti"
+                            android:textSize="12dp" />
+                        <!-- Temperature Felt Data TextView -->
+                        <TextView
+                            android:id="@+id/text_rassenti"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imgfelt"
+                            android:layout_gravity="bottom|center"
+                            android:gravity="bottom|center"
+                            android:padding="10dp"
+                            android:text="22°C" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <!-- Tiny Square - Humidity  -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardhumid"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cardwind"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="#F4F8F7"
+                    android:padding="30dp"
+                    android:paddingLeft="30dp"
+                    app:cardCornerRadius="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="#F4F8F7">
+                        <!-- Icon for humidity  -->
+                        <ImageView
+                            android:id="@+id/imghumid"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/hum" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_toEndOf="@id/imghumid"
+                            android:gravity="center"
+                            android:text="Humidité"
+                            android:fontFamily="times"
+                            android:textSize="12dp" />
+                        <!-- Humidity Felt Data TextView -->
+                        <TextView
+                            android:id="@+id/text_humidity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imghumid"
+                            android:layout_gravity="bottom|center"
+                            android:gravity="bottom|center"
+                            android:padding="10dp"
+                            android:text="66%" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <!-- Tiny Square - Precipitation  -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardprecip"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cardfelt"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/cardhumid"
+                    android:layout_weight="1"
+                    android:background="#F4F8F7"
+                    android:padding="30dp"
+                    app:cardCornerRadius="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="#F4F8F7">
+                        <!-- Icon for Temperature Felt -->
+                        <ImageView
+                            android:id="@+id/precip"
+                            android:layout_width="45dp"
+                            android:layout_height="50dp"
+                            android:padding="5dp"
+                            android:src="@drawable/precipitation" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_toEndOf="@id/precip"
+                            android:gravity="center"
+                            android:fontFamily="times"
+                            android:text="Précipitations"
+                            android:textSize="12dp" />
+                        <!-- Temperature Felt Data TextView -->
+                        <TextView
+                            android:id="@+id/text_precipitation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/precip"
+                            android:layout_gravity="bottom|center"
+                            android:gravity="bottom|center"
+                            android:padding="10dp"
+                            android:text="22°C" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Add more Tiny Squares for other data types (e.g., Humidity, Precipitation) -->
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/upcdashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="70dp"
+                >
+                <ListView
+                    android:id="@+id/listviewdays"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!--Bottom navigation bar -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#C9F6C7"
+        android:layout_gravity="bottom|center"
+        app:cardCornerRadius="16dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F4F7F6"
+            android:elevation="8dp"
+            android:orientation="horizontal">
+            <!-- Content of the first menu item -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="5dp">
+                <ImageView
+                    android:id="@+id/meteomenu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:clickable="true"
+                    android:src="@drawable/meteo"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Météo" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/tasks"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:clickable="true"
+                    android:src="@drawable/baseline_tasknoclick_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Mes Tâches" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/expanded_menu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:clickable="true"
+                    android:src="@drawable/menu_bar"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Menu" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

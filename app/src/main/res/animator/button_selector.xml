@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:color="#FFFFFF" /> <!-- Color when button is pressed -->
+    <item android:color="#8BA39D9F" /> <!-- Default color when button is not pressed -->
+</selector>

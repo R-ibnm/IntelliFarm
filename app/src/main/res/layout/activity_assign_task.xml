@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#65B8D8D2">
+    <ImageButton
+        android:id="@+id/bttn_back"
+        android:layout_width="41dp"
+        android:layout_height="31dp"
+        android:background="@drawable/baseline_arrow_back_24" />
+
+
+    <TextView
+        android:id="@+id/titre_ajouter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/bttn_back"
+        android:fontFamily="times"
+        android:padding="20dp"
+        android:text="Ajouter une Tache"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+
+
+    <LinearLayout
+        android:layout_below="@id/titre_ajouter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/green_back">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="30dp">
+            <LinearLayout
+                android:id="@+id/layout_ajout_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/taskTitleEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nom de la Tache"
+                    android:padding="20dp"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/taskDescriptionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description de la Tache"
+                    android:padding="20dp"
+                    android:textSize="20dp" />
+                <Button
+                    android:id="@+id/assignTaskButton"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="#226760"
+                    android:text="Ajouter"
+                    android:textColor="@color/white" />
+
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dialog_margin">30dp</dimen>
+    <dimen name="dialog_title_margin">16dp</dimen>
+    <!-- Dimension pour la largeur fixe des EditText -->
+    <dimen name="edittext_width">220dp</dimen>
+
+    <!-- Dimension pour l'espace entre les EditText -->
+    <dimen name="edittext_margin_bottom">8dp</dimen>
+
+</resources>

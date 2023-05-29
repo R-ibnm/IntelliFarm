@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="#65B8D8D2"
+    tools:ignore="ExtraText" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/bttn_back"
+            android:layout_width="41dp"
+            android:layout_height="31dp"
+            android:background="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:layout_below="@id/bttn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Détails de l'Ouvrier"
+            android:fontFamily="times"
+            android:textSize="30dp"
+            android:layout_marginBottom="30dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/detailcard"
+        android:layout_below="@id/top"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:background="@drawable/green_back"
+        android:orientation="vertical"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+            android:backgroundTint="#D8F6FCFA"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp">
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:src="@drawable/baseline_delete_24"
+                android:backgroundTint="#00D11010" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:textColor="#000000"
+                    android:text="FullName"
+                    android:fontFamily="times"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/prenomTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Number"
+                    android:textColor="#000000"
+                    android:fontFamily="times"
+
+                    android:textSize="20dp" />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/call"
+                        android:layout_width="55dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@android:drawable/sym_action_call" />
+
+                    <ImageView
+                        android:id="@+id/msg"
+                        android:layout_width="46dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/baseline_sms_24" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    <!-- Workers's tasks -->
+    <RelativeLayout
+        android:id="@+id/taskworker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@id/detailcard">
+        <TextView
+            android:id="@+id/titleTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="30dp"
+            android:fontFamily="times"
+            android:text="Taches de l'Ouvrier"/>
+
+        <ImageButton
+            android:id="@+id/assignTaskButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/titleTasks"
+            android:background="#00FFFFFF"
+            android:src="@drawable/baseline_add_24" />
+        <ListView
+            android:id="@+id/taskListView"
+            android:layout_below="@id/titleTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

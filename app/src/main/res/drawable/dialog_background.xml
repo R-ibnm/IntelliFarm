@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Définissez ici votre arrière-plan personnalisé pour le dialogue -->
+    <solid android:color="#FFFFFF" /> <!-- Couleur d'arrière-plan -->
+    <corners android:radius="8dp" /> <!-- Coins arrondis -->
+</shape>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/bckgrdjardin"
+    tools:context=".Detail_passerelle"
+    >
+    <ImageButton
+        android:id="@+id/bttn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:background="#00FFFFFF"/>
+
+
+    <TextView
+        android:id="@+id/mesplantes"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="times"
+        android:textSize="30dp"
+        android:clickable="true"
+        android:textColor="#000000"
+        android:text="Parcelle 1 " />
+
+    <TextView
+        android:id="@+id/explorer"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@id/mesplantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="times"
+        android:textSize="30dp"
+        android:clickable="true"
+        android:textColor="#B04F4F51"
+        android:text=" (Détails)" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/explorer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#D4EBE5"
+        app:cardCornerRadius="20dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:visibility="visible"
+                app:cardCornerRadius="20dp">
+
+                <RelativeLayout
+                    android:layout_width="673dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_plant1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/pomme_png" />
+
+                    <TextView
+                        android:id="@+id/plant_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/img_plant1"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/img_plant1"
+                        android:fontFamily="times"
+                        android:text="Pomme"
+                        android:textColor="#497067"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/etat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/plant_name"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/img_plant1"
+                        android:fontFamily="times"
+                        android:text="Etat de la plante:"
+                        android:textColor="#497067"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/etat_plante"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/etat"
+                        android:layout_alignStart="@id/etat"
+                        android:layout_marginStart="165dp"
+                        android:layout_marginTop="-32dp"
+                        android:fontFamily="times"
+                        android:text="Saine"
+                        android:textColor="#497067"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/h"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/etat_plante"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="times"
+                        android:gravity="center"
+                        android:text="H"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/humidityTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/h"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_toEndOf="@id/h"
+                        android:fontFamily="times"
+                        android:gravity="center"
+                        android:text="66%"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/etat_plante"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@id/humidityTextView"
+                        android:fontFamily="times"
+                        android:gravity="center"
+                        android:text="T"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/temperatureTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/t"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="-1dp"
+                        android:layout_toEndOf="@id/t"
+                        android:fontFamily="times"
+                        android:gravity="center"
+                        android:text="22 °C"
+                        android:textSize="18dp" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:visibility="visible"
+                app:cardCornerRadius="20dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/orange_png"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/cerise_png" />
+                    <TextView
+                        android:id="@+id/plantname2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/orange_png"
+                        android:layout_toEndOf="@id/orange_png"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="times"
+                        android:text="Cerise"
+                        android:textColor="#497067"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/etat1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/plantname2"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/orange_png"
+                        android:fontFamily="times"
+                        android:text="Etat de la plante:"
+                        android:textColor="#497067"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/etat_plante1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/etat1"
+                        android:layout_alignStart="@id/etat1"
+                        android:layout_marginStart="165dp"
+                        android:layout_marginTop="-32dp"
+                        android:fontFamily="times"
+                        android:text="Saine"
+                        android:textColor="#497067"
+                        android:textSize="17dp"
+                         />
+
+                    <TextView
+                        android:id="@+id/h1"
+                        android:layout_below="@id/etat_plante1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="H"
+                        android:fontFamily="times"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/humidityTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/h1"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@id/h1"
+                        android:fontFamily="times"
+                        android:gravity="center"
+                        android:text="66%"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t1"
+                        android:layout_toEndOf="@id/humidityTextView1"
+                        android:layout_below="@id/etat_plante1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="T"
+                        android:fontFamily="times"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/temperatureTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/t1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@id/t1"
+                        android:fontFamily="times"
+                        android:gravity="center"
+                        android:text="22 °C"
+                        android:textSize="18dp" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
