@@ -1,27 +1,25 @@
 package com.example.pfa;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -31,79 +29,24 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Sante extends AppCompatActivity {
+public class MainActivity2 extends Activity {
     private static final String API_URL = "https://flask-server-5obr.onrender.com/predict";
-    private DatabaseReference databaseReference;
-    private TextView humidityTextView ,parcel_n;
-    private TextView temperatureTextView, parcelle;
-    private ImageView expanded_menu,jardinmenu, meteomenu;
 
+    private Button sendButton;
+    private TextView resultImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sante);
-        humidityTextView = findViewById(R.id.humidityTextView);
-        temperatureTextView = findViewById(R.id.temperatureTextView);
-        expanded_menu=(ImageView)findViewById(R.id.expanded_menu);
-        jardinmenu=(ImageView)findViewById(R.id.jardinmenu);
-        meteomenu=(ImageView)findViewById(R.id.meteomenu);
-        parcel_n= findViewById(R.id.parcel_n);
-        parcelle= findViewById(R.id.parcelle);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("DHT11");
+        setContentView(R.layout.activity_main2);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        sendButton = findViewById(R.id.button);
+        resultImageView = findViewById(R.id.textView);
+// Initialise Firebase
+        FirebaseApp.initializeApp(this);
+        sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                humidityTextView.setText("");
-                temperatureTextView.setText("");
-                DataSnapshot lastDataSnapshot = null;
-
-                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    lastDataSnapshot = childSnapshot;
-                }
-
-                if (lastDataSnapshot != null) {
-                    Double humidity = lastDataSnapshot.child("humidity").getValue(Double.class);
-                    Double temperature = lastDataSnapshot.child("temperature").getValue(Double.class);
-
-                    Log.d("Firebase", "Humidity: " + humidity);
-                    Log.d("Firebase", "Temperature: " + temperature);
-
-                    String humidityText = ": " + humidity + "%";
-                    String temperatureText = ": " + temperature + "°C";
-                    humidityTextView.setText(humidityText);
-                    temperatureTextView.setText(temperatureText);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("Firebase", "Error reading data: " + databaseError.getMessage());
-                Toast.makeText(Sante.this, "Error reading data", Toast.LENGTH_SHORT).show();
-            }
-        });
-        expanded_menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(Sante.this, MenuAdmin.class);
-                startActivity(intent);
-
-            }
-        });
-        jardinmenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(Sante.this, HomeAdmin.class);
-                startActivity(intent);
-
-            }
-        });
-        parcel_n.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 // Récupérer l'image depuis les ressources Drawable
                 Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tomatetest);
 
@@ -114,30 +57,13 @@ public class Sante extends AppCompatActivity {
 
                 // Envoie de l'image à l'API dans un thread séparé
                 new SendImageTask().execute(imageBytes);
-
-                Intent intent = new Intent(Sante.this, Detail_passerelle.class);
-                startActivity(intent);
-
-            }
-        });
-
-
-        meteomenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(Sante.this, MainActivity.class);
-                startActivity(intent);
-
             }
         });
     }
 
     private class SendImageTask extends AsyncTask<byte[], Void, String> {
-
         @Override
         protected String doInBackground(byte[]... params) {
-            System.out.println("alooooo");
             try {
 
                 OkHttpClient client = new OkHttpClient.Builder()
@@ -179,7 +105,7 @@ public class Sante extends AppCompatActivity {
         protected void onPostExecute(String response) {
             if (response != null) {
                 // Afficher la réponse dans le layout
-                Toast.makeText(Sante.this, response, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity2.this, response, Toast.LENGTH_SHORT).show();
 
                 // Créer un tableau de noms de plantes
                 String[] plantNames = {
@@ -206,9 +132,9 @@ public class Sante extends AppCompatActivity {
                         // Stocker le nom de la plante et l'état dans Firebase Realtime Database
                         DatabaseReference plantRef = databaseRef.child("results").child(plantName);
                         if(state.equals("healthy")){
-                            plantRef.child("etat").setValue(0);
+                            plantRef.child("etat").setValue("0");
                         }else{
-                            plantRef.child("etat").setValue(1);
+                            plantRef.child("etat").setValue("1");
                         }
 
                     }
@@ -216,7 +142,7 @@ public class Sante extends AppCompatActivity {
 
 
             } else {
-                Toast.makeText(Sante.this, "Une erreur s'est produite", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity2.this, "Une erreur s'est produite", Toast.LENGTH_SHORT).show();
             }
         }
     }
