@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@drawable/bckgrdjardin"
-    tools:context=".Detail_passerelle"
+    tools:context=".FruitDetails"
     >
     <ImageButton
         android:id="@+id/bttn_back"
@@ -18,7 +18,7 @@
 
 
     <TextView
-        android:id="@+id/mesplantes"
+        android:id="@+id/MonFruit"
         android:layout_marginTop="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,12 +26,12 @@
         android:textSize="30dp"
         android:clickable="true"
         android:textColor="#000000"
-        android:text="Parcelle 1 " />
+        android:text="Mon Fruit " />
 
     <TextView
         android:id="@+id/explorer"
         android:layout_marginTop="40dp"
-        android:layout_toEndOf="@id/mesplantes"
+        android:layout_toEndOf="@id/MonFruit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="times"
@@ -41,7 +41,7 @@
         android:text=" (Détails)" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardview"
+
         android:layout_marginTop="20dp"
         android:layout_below="@id/explorer"
         android:layout_width="match_parent"
@@ -58,6 +58,7 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -73,7 +74,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="16dp">
+                    android:paddingBottom="8dp"
+                    >
 
                     <ImageView
                         android:id="@+id/img_plant1"
@@ -83,7 +85,8 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:src="@drawable/pomme_png" />
+                        android:src="@drawable/pomme_png"
+                        />
 
                     <TextView
                         android:id="@+id/plant_name"
@@ -178,24 +181,22 @@
                         android:text="22 °C"
                         android:textSize="18dp" />
 
-                    <ImageButton
-                        android:id="@+id/bttn_infos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/baseline_read_more_24"
-                        android:background="#00FFFFFF"
-                        android:layout_below="@id/etat_plante"
-                        android:layout_marginStart="300dp"
-                        android:layout_marginTop="16dp"
-
-                        />
 
                 </RelativeLayout>
+
             </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/myImage"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="1000dp"
+                android:src="@drawable/tomatetest" />
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
 
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

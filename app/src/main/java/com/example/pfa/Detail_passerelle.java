@@ -22,8 +22,11 @@ public class Detail_passerelle extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private TextView humidityTextView, humidityTextView1;
     private TextView temperatureTextView, temperatureTextView1;
-    private ImageView bttn_back;
+    private ImageView bttn_back, bttn_infos;
     private TextView etatPlanteTextView, etatPlanteTextView1;
+    Double humidity,temperature;
+    Integer etatPomme;
+    String statut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class Detail_passerelle extends AppCompatActivity {
         temperatureTextView = findViewById(R.id.temperatureTextView);
 
         bttn_back=(ImageView)findViewById(R.id.bttn_back);
+        bttn_infos=(ImageView)findViewById(R.id.bttn_infos);
         etatPlanteTextView = findViewById(R.id.etat_plante);
 
 
@@ -53,8 +57,8 @@ public class Detail_passerelle extends AppCompatActivity {
                 }
 
                 if (lastDataSnapshot != null) {
-                    Double humidity = lastDataSnapshot.child("humidity").getValue(Double.class);
-                    Double temperature = lastDataSnapshot.child("temperature").getValue(Double.class);
+                    humidity= lastDataSnapshot.child("humidity").getValue(Double.class);
+                    temperature = lastDataSnapshot.child("temperature").getValue(Double.class);
 
                     Log.d("Firebase", "Humidity: " + humidity);
                     Log.d("Firebase", "Temperature: " + temperature);
@@ -81,15 +85,18 @@ public class Detail_passerelle extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot planteSnapshot : dataSnapshot.getChildren()) {
                     String nomPlante = planteSnapshot.getKey();
-                    if (nomPlante.equals("Potato")) {
-                        Integer etatPomme = planteSnapshot.child("etat").getValue(Integer.class);
+                    if (nomPlante.equals("Pomme")) {
+                        etatPomme= planteSnapshot.child("etat").getValue(Integer.class);
                         if (etatPomme != null) {
                             if (etatPomme == 0) {
                                 etatPlanteTextView.setText("Saine");
+                                statut ="Saine";
                             } else if (etatPomme == 1) {
                                 etatPlanteTextView.setText("Malade");
+                                statut ="Malade";
                             } else {
                                 etatPlanteTextView.setText("État inconnu");
+                                statut ="État inconnu";
                             }
                         }
                     }
@@ -107,6 +114,19 @@ public class Detail_passerelle extends AppCompatActivity {
 
                 Intent intent = new Intent(Detail_passerelle.this, Sante.class);
                 startActivity(intent);
+
+            }
+        });
+        bttn_infos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Detail_passerelle.this, FruitDetails.class);
+                intent.putExtra("humidity",humidity );
+                intent.putExtra("temp", temperature);
+                intent.putExtra("etat", statut);
+                startActivity(intent);
+
 
             }
         });

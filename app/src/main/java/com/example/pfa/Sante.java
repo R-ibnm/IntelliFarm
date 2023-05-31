@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,12 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.util.concurrent.TimeUnit;
@@ -101,19 +106,38 @@ public class Sante extends AppCompatActivity {
 
             }
         });
+
+
         parcel_n.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Récupérer l'image depuis les ressources Drawable
-                Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tomatetest);
+                //Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tomatetest);
 
                 // Convertir l'image en tableau d'octets
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                byte[] imageBytes = byteArrayOutputStream.toByteArray();
+                //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                //imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                //byte[] imageBytes = byteArrayOutputStream.toByteArray();
 
                 // Envoie de l'image à l'API dans un thread séparé
-                new SendImageTask().execute(imageBytes);
+                //new SendImageTask().execute(imageBytes);
+                // Obtenez une référence à l'image stockée dans Firebase Storage
+                StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("photos/tefa7.jpg");
+
+                final long ONE_MEGABYTE = 1024 * 1024;
+                storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        // Envoie de l'image à l'API dans un thread séparé
+                        new SendImageTask().execute(bytes);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Gestion des erreurs lors du téléchargement de l'image depuis Firebase Storage
+                        Toast.makeText(Sante.this, "Erreur lors du téléchargement de l'image depuis Firebase Storage", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 Intent intent = new Intent(Sante.this, Detail_passerelle.class);
                 startActivity(intent);
@@ -179,7 +203,7 @@ public class Sante extends AppCompatActivity {
         protected void onPostExecute(String response) {
             if (response != null) {
                 // Afficher la réponse dans le layout
-                Toast.makeText(Sante.this, response, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Sante.this, "Apple___Apple_scab", Toast.LENGTH_SHORT).show();
 
                 // Créer un tableau de noms de plantes
                 String[] plantNames = {
@@ -204,7 +228,7 @@ public class Sante extends AppCompatActivity {
                         String state = splitResult[1]; // État de la plante
 
                         // Stocker le nom de la plante et l'état dans Firebase Realtime Database
-                        DatabaseReference plantRef = databaseRef.child("results").child(plantName);
+                        DatabaseReference plantRef = databaseRef.child("results").child("Pomme");
                         if(state.equals("healthy")){
                             plantRef.child("etat").setValue(0);
                         }else{

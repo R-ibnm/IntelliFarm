@@ -101,7 +101,7 @@ public class profileOuvrier extends AppCompatActivity {
                 String newNumber = number.getText().toString();
 
                 // Afficher un dialogue pour demander le mot de passe de l'utilisateur
-                AlertDialog.Builder builder = new AlertDialog.Builder(profileOuvrier.this, R.style.CustomDialogStyle);
+                AlertDialog.Builder builder = new AlertDialog.Builder(profileOuvrier.this);
                 builder.setTitle("Confirmation");
                 builder.setMessage("Veuillez entrer votre mot de passe pour confirmer la mise à jour de l'e-mail");
 
@@ -314,7 +314,7 @@ public class profileOuvrier extends AppCompatActivity {
     }
     private void showChangePasswordDialog() {
         // Créer un dialogue d'alerte
-        AlertDialog.Builder builder = new AlertDialog.Builder(profileOuvrier.this, R.style.CustomDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(profileOuvrier.this);
         builder.setTitle("Changer le mot de passe");
 
 
